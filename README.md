@@ -1,16 +1,17 @@
-# 🧪 Random-Crypto Benchmark
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0) [![arXiv:2506.02048](https://img.shields.io/badge/arXiv-2506.02048-b31b1b.svg)](https://arxiv.org/abs/2506.02048)
+# Random-Crypto
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![arXiv:2506.02048](https://img.shields.io/badge/arXiv-2506.02048-b31b1b.svg)](https://arxiv.org/abs/2506.02048)
 
 The Random-Crypto Benchmark provides a procedurally generated dataset of cryptographic CTF challenges, tailored for training and evaluating large language models in reinforcement learning settings.
 
 
 ---
-## Usage
+## Dataset
 
-* ✅ 50 Human-verified challenges for evaluation [(link)](https://github.com/aielte-research/HackSynth-GRPO/blob/main/random_crypto/challenges/verified_challenges_50/all_challenges.csv)
-* ⚙️ 5000 Non-Verified Challenges for training [(link)](https://github.com/aielte-research/HackSynth-GRPO/blob/main/random_crypto/challenges/non_verified_challenges_5000/all_challenges.csv)
+* ✅ 50 Human-verified challenges for evaluation [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/verified_challenges_50/all_challenges.csv)
+* ⚙️ 5000 Non-Verified Challenges for training [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/non_verified_challenges_5000/all_challenges.csv)
 
-> 🧠 **Note:** To evaluate an LLM using this benchmark, concatenate the `story` and `necessary_info` fields before passing them as input.
+> 🧠 **Note:** To evaluate an LLM using this benchmark, concatenate the `story` and `necessary_info` fields before passing them as input, the correct solution is in the flag column, if the LLM output contains the solution, it has solved the challenge.
 
 ---
 
@@ -57,19 +58,18 @@ Make sure to set your **OpenAI API key** in a `.env` file at the root of this fo
 OPENAI_API_KEY=your-key-here
 ```
 
-### Arguments
-
-| Argument           | Description                                                                 |
-|--------------------|-----------------------------------------------------------------------------|
-| `--variants`       | Number of variants per challenge subtype. <br>**Default:** `1`              |
-| `--output_folder`  | Folder where generated challenges and metadata will be saved. <br>**Default:** `"generated_challenges_llm"` |
-
 
 ### Example Usage
 This code generates 50 challenges, one from each type.
 
 ```bash
 python main.py --variants 1 --output_folder my_generated_challenges
+```
+
+This code generates 5000 challenges, one from each type.
+
+```bash
+python main.py --variants 100 --output_folder my_generated_challenges
 ```
 
 ### Challenge Taxonomy
