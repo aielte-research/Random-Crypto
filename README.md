@@ -1,8 +1,11 @@
 # 🧪 Random-Crypto Benchmark
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0) [![arXiv:2506.02048](https://img.shields.io/badge/arXiv-2506.02048-b31b1b.svg)](https://arxiv.org/abs/2506.02048)
 
-The Random-Crypto Benchmark generates cryptographic CTF challenges tailored for evaluating and training large language models in reinforcement learning settings.
+The Random-Crypto Benchmark provides a procedurally generated dataset of cryptographic CTF challenges, tailored for training and evaluating large language models in reinforcement learning settings.
 
-It includes two pre-generated sets of problems:
+
+---
+## Usage
 
 * ✅ 50 Human-verified challenges for evaluation [(link)](https://github.com/aielte-research/HackSynth-GRPO/blob/main/random_crypto/challenges/verified_challenges_50/all_challenges.csv)
 * ⚙️ 5000 Non-Verified Challenges for training [(link)](https://github.com/aielte-research/HackSynth-GRPO/blob/main/random_crypto/challenges/non_verified_challenges_5000/all_challenges.csv)
@@ -26,6 +29,25 @@ Each row in the challenge CSV files contains a single cryptographic task with th
 ---
 
 ## ⚙️ Generating New Challenges
+
+**1. Clone the repository:**
+```bash
+git clone [https://github.com/aielte-research/Random-Crypto.git](https://github.com/aielte-research/Random-Crypto.git)
+cd Random-Crypto
+```
+
+**2. Set up the environment:**
+
+```bash
+
+# Create a virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate 
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
 
 If you want to generate new or additional procedural challenges, use the `main.py` script.
 
