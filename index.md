@@ -7,14 +7,16 @@
 - ⚙️ [Evaluation Scripts](https://github.com/muzsail/hacksynth)
 
 
-* ✅ 50 Human-verified challenges for evaluation [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/verified_challenges_50/all_challenges.csv)
-* ⚙️ 5000 Non-Verified Challenges for training [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/non_verified_challenges_5000/all_challenges.csv)
+* ✅ **50 Human-verified** challenges for testing [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/verified_challenges_50/all_challenges.csv)
+* ⚙️ 5000 challenges for training [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/non_verified_challenges_5000/all_challenges.csv)
 
 
 ## Leaderboard
 
 | **Name** | Model | Algorithm | Model Baseline | Improvement | Performance | Link |
+|---------------------------------------------------------|
 | HackSynth-GRPO |	Llama-3.1-8B |	GRPO | XX.X% |	XX.X% | XX.X% |	link |
+|---------------------------------------------------------|
 
 ### Challenge Taxonomy
 
@@ -30,6 +32,7 @@ The following table summarizes the types of cryptographic challenges currently s
 | **PRNG**             | Predictable seed, Time-based seed, Low-entropy generator, LFSR weakness, Congruential generator flaw |
 | **Web Crypto**       | JWT 'none' algorithm, Weak cookie encryption, Broken key exchange, Insecure session token |
 | **Signature Schemes**| ECDSA nonce reuse, RSA sign with low public exponent |
+|---------------------------------------------------------|
 
 
 ## How To Cite
