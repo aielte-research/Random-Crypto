@@ -1,16 +1,17 @@
-# 🧪 Random-Crypto Benchmark
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0) [![arXiv:2506.02048](https://img.shields.io/badge/arXiv-2506.02048-b31b1b.svg)](https://arxiv.org/abs/2506.02048)
+# Random-Crypto
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![arXiv:2506.02048](https://img.shields.io/badge/arXiv-2506.02048-b31b1b.svg)](https://arxiv.org/abs/2506.02048)
 
 The Random-Crypto Benchmark provides a procedurally generated dataset of cryptographic CTF challenges, tailored for training and evaluating large language models in reinforcement learning settings.
 
 
 ---
-## Usage
+## Dataset
 
-* ✅ 50 Human-verified challenges for evaluation [(link)](https://github.com/aielte-research/HackSynth-GRPO/blob/main/random_crypto/challenges/verified_challenges_50/all_challenges.csv)
-* ⚙️ 5000 Non-Verified Challenges for training [(link)](https://github.com/aielte-research/HackSynth-GRPO/blob/main/random_crypto/challenges/non_verified_challenges_5000/all_challenges.csv)
+* ✅ 50 Human-verified challenges for evaluation [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/verified_challenges_50/all_challenges.csv)
+* ⚙️ 5000 Non-Verified Challenges for training [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/non_verified_challenges_5000/all_challenges.csv)
 
-> 🧠 **Note:** To evaluate an LLM using this benchmark, concatenate the `story` and `necessary_info` fields before passing them as input.
+> 🧠 **Note:** To evaluate an LLM using this benchmark, concatenate the `story` and `necessary_info` fields before passing them as input, the correct solution is in the flag column, if the LLM output contains the solution, it has solved the challenge.
 
 ---
 
@@ -57,13 +58,6 @@ Make sure to set your **OpenAI API key** in a `.env` file at the root of this fo
 OPENAI_API_KEY=your-key-here
 ```
 
-### Arguments
-
-| Argument           | Description                                                                 |
-|--------------------|-----------------------------------------------------------------------------|
-| `--variants`       | Number of variants per challenge subtype. <br>**Default:** `1`              |
-| `--output_folder`  | Folder where generated challenges and metadata will be saved. <br>**Default:** `"generated_challenges_llm"` |
-
 
 ### Example Usage
 This code generates 100 challenges, two from each type.
@@ -71,6 +65,28 @@ This code generates 100 challenges, two from each type.
 ```bash
 python main.py --variants 2 --output_folder my_generated_challenges
 ```
+
+This code generates 5000 challenges, one from each type.
+
+```bash
+python main.py --variants 100 --output_folder my_generated_challenges
+```
+
+### Challenge Taxonomy
+
+The following table summarizes the types of cryptographic challenges currently supported in the benchmark:
+
+| **Archetype**        | **Subtypes** |
+|----------------------|--------------|
+| **Classical**        | Caesar, Vigenère, Playfair, Hill, Rail fence, Substitution, Substitution_direct, Transposition, Autokey, Atbash, XOR, Hex, ASCII shift, Morse code, Fibonacci encoding, Base64, Base64_layered, Base85, Base85_layered, Split flag, Reversed flag, Chunked flag |
+| **RSA**              | Small primes, Repeated prime usage, Partial key exposure, Common factors, Shared prime, Blum integers |
+| **AES**              | AES-GCM, AES-CCM, AES-XTS, AES-CFB |
+| **ECC**              | Small-order curves, Faulty curve parameters, Reused nonce (ECDSA) |
+| **Hash**             | MD5 reverse, Poor random salt, Iterated hash challenge |
+| **PRNG**             | Predictable seed, Time-based seed, Low-entropy generator, LFSR weakness, Congruential generator flaw |
+| **Web Crypto**       | JWT 'none' algorithm, Weak cookie encryption, Broken key exchange, Insecure session token |
+| **Signature Schemes**| ECDSA nonce reuse, RSA sign with low public exponent |
+
 
 ---
 
