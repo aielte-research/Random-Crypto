@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Random-Crypto Benchmark</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans leading-relaxed">
+    <!-- Header -->
+    <header class="text-center py-16">
+        <h1 class="text-5xl font-bold text-emerald-600">Random-Crypto</h1>
+        <p class="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
+            A procedural benchmark for evaluating reasoning and tool use in LLM agents on cryptographic challenges.
+        </p>
+
+        <div class="flex justify-center gap-4 mt-8 flex-wrap">
+            <a href="https://arxiv.org/abs/2506.02048"
+                class="px-4 py-2 bg-white border rounded-xl shadow hover:bg-emerald-50">📄 Paper (arXiv)</a>
+            <a href="https://github.com/aielte-research/Random-Crypto"
+                class="px-4 py-2 bg-white border rounded-xl shadow hover:bg-emerald-50">💾 Dataset (GitHub)</a>
+        </div>
+
+        <div class="mt-6 space-y-1">
+            <p>✅ <strong>50 human-verified</strong> challenges for <strong>benchmarking</strong> <a
+                    href="https://github.com/aielte-research/Random-Crypto/tree/main/challenges/verified_challenges_50/all_challenges.csv"
+                    class="text-emerald-600 underline hover:text-emerald-800">link</a>
+            </p>
+            <p>⚙️ 5000 challenges for <strong>reinforcement learning</strong>: <a
+                    href="https://github.com/aielte-research/Random-Crypto/tree/main/challenges/non_verified_challenges_5000/all_challenges.csv"
+                    class="text-emerald-600 underline hover:text-emerald-800">link</a>
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6">
+        <!-- Leaderboard -->
+        <section class="mt-10">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-4">Leaderboard</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full border border-gray-200 text-sm text-center">
+                    <thead class="bg-emerald-100 text-emerald-900">
+                        <tr>
+                            <th rowspan="2" class="p-2 border align-middle">Name</th>
+                            <th rowspan="2" class="p-2 border align-middle">Model</th>
+                            <th rowspan="2" class="p-2 border align-middle">Algorithm</th>
+                            <th colspan="2" class="p-2 border">Model Baseline</th>
+                            <th colspan="2" class="p-2 border">After Training</th>
+                            <th colspan="2" class="p-2 border">Improvement</th>
+                            <th rowspan="2" class="p-2 border align-middle">Link</th>
+                        </tr>
+                        <tr>
+                            <th class="p-2 border">Pass@8</th>
+                            <th class="p-2 border">Maj@8</th>
+                            <th class="p-2 border">Pass@8</th>
+                            <th class="p-2 border">Maj@8</th>
+                            <th class="p-2 border">Pass@8</th>
+                            <th class="p-2 border">Maj@8</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="bg-white">
+                        <tr class="hover:bg-emerald-50">
+                            <td class="p-2 border font-medium">HackSynth-GRPO</td>
+                            <td class="p-2 border">Llama-3.1-8B</td>
+                            <td class="p-2 border">GRPO</td>
+                            <td class="p-2 border">0.10</td> <!-- baseline pass@8 -->
+                            <td class="p-2 border">0.02</td>
+                            <td class="p-2 border font-semibold text-emerald-700">0.90</td>
+                            <td class="p-2 border font-semibold text-emerald-700">0.14</td>
+                            <td class="p-2 border font-semibold text-emerald-700">0.80</td>
+                            <td class="p-2 border font-semibold text-emerald-700">0.12</td>
+                            <td class="p-2 border text-emerald-600 underline"><a href="https://arxiv.org/abs/2506.02048">Paper</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+
+
+        <!-- Flowchart -->
+        <section class="mt-16">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6 text-center">Challenge Generation Pipeline</h2>
+
+            <div class="flex justify-center">
+                <figure class="bg-white shadow-md rounded-2xl border border-gray-200 p-4 max-w-2xl w-full">
+                    <img src="images/flowchart.png" alt="Challenge generation pipeline diagram"
+                        class="rounded-lg w-full h-auto mx-auto">
+                    <figcaption class="text-sm text-gray-500 text-center mt-3">
+                        Overview of the Random-Crypto challenge generation process.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Challenge Taxonomy -->
+        <section class="mt-16">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-4">Cryptographic Algorithms</h2>
+            <p class="text-gray-700 mb-6">
+                The following categories summarize the types of cryptographic algorithms implemented in the
+                benchmark:
+            </p>
+
+            <details class="group bg-white rounded-xl border border-gray-200 shadow-sm">
+                <summary
+                    class="flex items-center justify-between px-4 py-3 cursor-pointer text-emerald-700 font-semibold hover:bg-emerald-50">
+                    Archetypes
+                    <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90" fill="none"
+                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </summary>
+                <div class="border-t border-gray-200 p-3">
+                    <div class="space-y-3">
+                        <!-- Template for each archetype -->
+                        <details class="group bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center cursor-pointer px-4 py-3 text-emerald-700 font-semibold hover:bg-emerald-50 transition">
+                                Classical
+                                <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </summary>
+                            <div class="bg-gray-50 border-t border-gray-200">
+                                <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+                                    <li class="p-3">Caesar</li>
+                                    <li class="p-3 bg-white">Vigenere</li>
+                                    <li class="p-3">Playfair</li>
+                                    <li class="p-3 bg-white">Hill</li>
+                                    <li class="p-3">Rail Fence</li>
+                                    <li class="p-3 bg-white">Substitution</li>
+                                    <li class="p-3">Transposition</li>
+                                    <li class="p-3 bg-white">Autokey</li>
+                                    <li class="p-3">Base64 Layered</li>
+                                    <li class="p-3 bg-white">Morse Code</li>
+                                    <li class="p-3">Fibonacci Encoding</li>
+                                    <li class="p-3 bg-white">XOR</li>
+                                    <li class="p-3">Base64</li>
+                                    <li class="p-3 bg-white">Base64 Layered</li>
+                                    <li class="p-3">Base85</li>
+                                    <li class="p-3 bg-white">Base85 Layered</li>
+                                    <li class="p-3">Substitution Direct</li>
+                                    <li class="p-3 bg-white">Atbash</li>
+                                    <li class="p-3">Hex</li>
+                                    <li class="p-3 bg-white">ASCII Shift</li>
+                                    <li class="p-3">Split Flag</li>
+                                    <li class="p-3 bg-white">Reversed Flag</li>
+                                    <li class="p-3">Chunked Flag</li>
+                                </ul>
+                            </div>
+
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center cursor-pointer px-4 py-3 text-emerald-700 font-semibold hover:bg-emerald-50 transition">
+                                RSA
+                                <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </summary>
+                            <div class="bg-gray-50 border-t border-gray-200">
+                                <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+                                    <li class="p-3">Small Primes</li>
+                                    <li class="p-3 bg-white">Repeated Prime Usage</li>
+                                    <li class="p-3">Partial Key Exposure</li>
+                                    <li class="p-3 bg-white">Common Factors</li>
+                                    <li class="p-3">Shared Prime</li>
+                                    <li class="p-3 bg-white">Blum Integers</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center cursor-pointer px-4 py-3 text-emerald-700 font-semibold hover:bg-emerald-50 transition">
+                                AES
+                                <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </summary>
+                            <div class="bg-gray-50 border-t border-gray-200">
+                                <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+                                    <li class="p-3">AES-GCM</li>
+                                    <li class="p-3 bg-white">AES-CCM</li>
+                                    <li class="p-3">AES-XTS</li>
+                                    <li class="p-3 bg-white">AES-CFB</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center cursor-pointer px-4 py-3 text-emerald-700 font-semibold hover:bg-emerald-50 transition">
+                                Hash
+                                <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </summary>
+                            <div class="bg-gray-50 border-t border-gray-200">
+                                <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+                                    <li class="p-3">MD5 Reverse</li>
+                                    <li class="p-3 bg-white">Poor Random Salt</li>
+                                    <li class="p-3">Iterated Hash Challenge</li>
+                                </ul>
+                            </div>
+
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center cursor-pointer px-4 py-3 text-emerald-700 font-semibold hover:bg-emerald-50 transition">
+                                ECC
+                                <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </summary>
+                            <div class="bg-gray-50 border-t border-gray-200">
+                                <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+                                    <li class="p-3">Small-order curves</li>
+                                    <li class="p-3 bg-white">Faulty curve parameters</li>
+                                    <li class="p-3">Reused nonce (ECDSA)</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center cursor-pointer px-4 py-3 text-emerald-700 font-semibold hover:bg-emerald-50 transition">
+                                PRNG
+                                <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </summary>
+                            <div class="bg-gray-50 border-t border-gray-200">
+                                <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+                                    <li class="p-3">Predictable seed</li>
+                                    <li class="p-3 bg-white">Time-based seed</li>
+                                    <li class="p-3">Low-entropy generator</li>
+                                    <li class="p-3 bg-white">LFSR weakness</li>
+                                    <li class="p-3">Congruential generator flaw</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center cursor-pointer px-4 py-3 text-emerald-700 font-semibold hover:bg-emerald-50 transition">
+                                Web Crypto
+                                <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </summary>
+                            <div class="bg-gray-50 border-t border-gray-200">
+                                <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+                                    <li class="p-3">JWT 'none' algorithm</li>
+                                    <li class="p-3 bg-white">Weak cookie encryption</li>
+                                    <li class="p-3">Broken key exchange</li>
+                                    <li class="p-3 bg-white">Insecure session token</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center cursor-pointer px-4 py-3 text-emerald-700 font-semibold hover:bg-emerald-50 transition">
+                                Signature Schemes
+                                <svg class="w-5 h-5 text-emerald-600 transition-transform group-open:rotate-90"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </summary>
+                            <div class="bg-gray-50 border-t border-gray-200">
+                                <ul class="divide-y divide-gray-200 text-sm text-gray-700">
+                                    <li class="p-3">ECDSA nonce reuse</li>
+                                    <li class="p-3 bg-white">RSA sign with low public exponent</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- Training Reward Progression -->
+        <section class="mt-16">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6 text-center">
+                Training Reward Progression
+            </h2>
+
+            <div class="flex justify-center">
+                <figure class="bg-white shadow-md rounded-2xl border border-gray-200 p-4 max-w-3xl w-full">
+                    <img src="images/reward_plot.png"
+                        alt="Reinforcement learning reward progression across training styles"
+                        class="rounded-lg w-full h-auto mx-auto">
+                    <figcaption class="text-sm text-gray-500 text-center mt-3 italic">
+                        Reward progression curves over the course of RL training for three different styles.
+                        The plot shows how training stability and final performance vary by learning strategy.
+                        See our <a href="https://arxiv.org/abs/2506.02048"
+                            class="text-emerald-600 hover:text-emerald-800 underline">paper</a>
+                        for detailed analysis and discussion.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Citation -->
+        <section class="mt-16 mb-20">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-4">How to Cite</h2>
+            <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>@article{muzsai2025improving,
+  title={Improving LLM Agents with Reinforcement Learning on Cryptographic CTF Challenges},
+  author={Muzsai, Lajos and Imolai, David and Luk{\'a}cs, Andr{\'a}s},
+  journal={arXiv preprint arXiv:2506.02048},
+  year={2025}
+}</code></pre>
+        </section>
+    </main>
+
+    <footer class="text-center text-sm text-gray-500 py-8 border-t mt-12">
+        © 2025 Eötvös Loránd University
+    </footer>
+</body>
+
+</html>
