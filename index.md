@@ -6,6 +6,16 @@
 - 💾 [Dataset (GitHub)](https://github.com/muzsail/random-crypto)
 - ⚙️ [Evaluation Scripts](https://github.com/muzsail/hacksynth)
 
+
+* ✅ 50 Human-verified challenges for evaluation [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/verified_challenges_50/all_challenges.csv)
+* ⚙️ 5000 Non-Verified Challenges for training [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/non_verified_challenges_5000/all_challenges.csv)
+
+
+## Leaderboard
+
+| **Name** | Model | Algorithm | Model Baseline | Improvement | Performance | Link |
+| HackSynth-GRPO |	Llama-3.1-8B |	GRPO | XX.X% |	XX.X% | XX.X% |	link |
+
 ### Challenge Taxonomy
 
 The following table summarizes the types of cryptographic challenges currently supported in the benchmark:
@@ -20,3 +30,14 @@ The following table summarizes the types of cryptographic challenges currently s
 | **PRNG**             | Predictable seed, Time-based seed, Low-entropy generator, LFSR weakness, Congruential generator flaw |
 | **Web Crypto**       | JWT 'none' algorithm, Weak cookie encryption, Broken key exchange, Insecure session token |
 | **Signature Schemes**| ECDSA nonce reuse, RSA sign with low public exponent |
+
+
+## How To Cite
+```bibtex
+@article{muzsai2025improving,
+  title={Improving LLM Agents with Reinforcement Learning on Cryptographic CTF Challenges},
+  author={Muzsai, Lajos and Imolai, David and Luk{\'a}cs, Andr{\'a}s},
+  journal={arXiv preprint arXiv:2506.02048},
+  year={2025}
+}
+```
