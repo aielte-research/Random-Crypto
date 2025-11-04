@@ -3,6 +3,7 @@ import csv
 import re
 import argparse
 import sys
+import pandas as pd
 sys.path.append("archetypes")
 import dotenv
 dotenv.load_dotenv()
@@ -206,21 +207,21 @@ def save_challenge_to_file(challenge_data, challenge_index, output_folder):
 def save_challenges_to_csv(challenges, output_folder):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
-    
-    # Collect all possible keys (columns) from every challenge_data
-    all_keys = set()
-    for challenge in challenges:
-        for k in challenge.keys():
-            all_keys.add(k)
-    fieldnames = list(all_keys)
+
+    df = pd.DataFrame(challenges)
+
+    out = pd.DataFrame({
+        "input": df["question"],
+        "hint": df["hint"],
+        "flag": df["flag"],
+        "archetype": df["archetype"],
+        "subtype": df["subtype"],
+        "difficulty": df["difficulty"]
+    })
 
     csv_path = os.path.join(output_folder, "all_challenges.csv")
-    with open(csv_path, "w", newline="", encoding="utf-8") as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
-        writer.writeheader()
-        for challenge in challenges:
-            writer.writerow(challenge)
-    
+    out.to_csv(csv_path, index=False, encoding="utf-8")
+
     print(f"[+] All challenges CSV saved to: {csv_path}")
 
 
