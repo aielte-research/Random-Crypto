@@ -60,10 +60,10 @@ OPENAI_API_KEY=your-key-here
 
 
 ### Example Usage
-This code generates 50 challenges, one from each type.
+This code generates 100 challenges, two from each type.
 
 ```bash
-python main.py --variants 1 --output_folder my_generated_challenges
+python main.py --variants 2 --output_folder my_generated_challenges
 ```
 
 This code generates 5000 challenges, one from each type.
@@ -95,7 +95,7 @@ The following table summarizes the types of cryptographic challenges currently s
 - David Imolai (david@imol.ai)
 - András Lukács (andras.lukacs@ttk.elte.hu)
 
----
+
 ## How To Cite
 ```bibtex
 @article{muzsai2025improving,
