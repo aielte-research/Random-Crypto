@@ -1,0 +1,5 @@
+theme: jekyll-theme-hacker
+title: Random-Crypto
+description: Procedurally generated cryptographic CTF challenge benchmark
+github:
+  is_project_page: true
