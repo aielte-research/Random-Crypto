@@ -11,22 +11,6 @@ The Random-Crypto Benchmark provides a procedurally generated dataset of cryptog
 * ✅ 50 Human-verified challenges for evaluation [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/verified_challenges_50/all_challenges.csv)
 * ⚙️ 5000 Non-Verified Challenges for training [(link)](https://github.com/aielte-research/Random-Crypto/tree/main/challenges/non_verified_challenges_5000/all_challenges.csv)
 
-> 🧠 **Note:** To evaluate an LLM using this benchmark, concatenate the `story` and `necessary_info` fields before passing them as input, the correct solution is in the flag column, if the LLM output contains the solution, it has solved the challenge.
-
----
-
-## 📊 CSV Format
-
-Each row in the challenge CSV files contains a single cryptographic task with the following columns:
-
-- `story`: The main challenge description presented to the model.
-- `necessary_info`: Key information required to solve the task.
-- `hint`: (Optional) A short hint to help solve the challenge.
-- `flag`: The expected correct solution (flag) in the format `flag{...}`.
-- `cipher`: The type of cipher or cryptographic scheme used (e.g., Caesar, Vigenère).
-- `extra_info`: Additional metadata, e.g., internal generation parameters or the used key.
-- `difficulty`: One of `easy`, `medium`, or `hard`.
-
 ---
 
 ## ⚙️ Generating New Challenges
@@ -54,7 +38,7 @@ If you want to generate new or additional procedural challenges, use the `main.p
 
 Make sure to set your **OpenAI API key** in a `.env` file at the root of this folder:
 
-```env
+```.env
 OPENAI_API_KEY=your-key-here
 ```
 
